@@ -76,9 +76,13 @@ componentDidMount = () => {
         .catch(function (error){
             console.log(error);
         });
+
+
     
 
 }
+
+
 
 renderPlaces = () => {
     if(this.state.places.length == 0){
@@ -92,14 +96,15 @@ renderPlaces = () => {
 }
 
 renderComments = () => {
-    if(this.state.comments.length == 0){
-        return
-    }
+    if(this.state.comments == null){
+        return (<div>Brak komentarzy</div>)
+    } else {
     return this.state.comments.map(comments => {
         return (
             <Comment key={comments.id} comments={comments}/>
-        )
-    })
+            )
+        })
+    }
 }
 
 render() {
@@ -156,6 +161,7 @@ render() {
                                         Informacje od właściciela:
                                     </h3>
                                     <p className="text-muted lead">{this.state.offer.description}</p>
+                                    <h5 className="font-weight-bold mt-3 mb-0"> Komentarze:</h5>
                                     <div className="row">{this.renderComments()}</div>
                                     <div>
                                         <Link to="/avaliableOffers">

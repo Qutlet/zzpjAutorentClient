@@ -8,7 +8,7 @@ export default class Comment extends Component {
     render() {
         const {message} = this.props.comments;
         return (
-            <div>
+            <div className="col-12 mx-auto my-3">
                 <div>
                     {message}
                 </div>
