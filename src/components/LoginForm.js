@@ -41,7 +41,7 @@ export class LoginForm extends Component {
         this.setState({
             buttonDisabled:true
         })
-        axios.post('https://autorentserver.azurewebsites.net/api/auth/sign-in', {
+        axios.post('', {
             name: this.state.name,
             password: this.state.password
           })

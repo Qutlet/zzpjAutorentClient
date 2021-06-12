@@ -43,7 +43,7 @@ export class RegisterForm extends Component {
         this.setState({
             buttonDisabled:true
         })
-        axios.post('https://autorentserver.azurewebsites.net/api/auth/register', {
+        axios.post('', {
             name: this.state.name,
             password: this.state.password
           })

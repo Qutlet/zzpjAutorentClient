@@ -72,10 +72,13 @@ export default class Navbar extends Component{
                 <StyledLink to="/cars">
                     <NavItem>Moje samochody</NavItem>
                 </StyledLink>
-                {/* <StyledLink to="/my-offer">
-                    <NavItem>Moje akutalne wypożycznia</NavItem>
+                <StyledLink to="/myoffers">
+                    <NavItem>Moje oferty</NavItem>
                 </StyledLink>
-                <StyledLink to="/messages">
+                <StyledLink to="/myrents">
+                    <NavItem>Moje wypożyczenia</NavItem>
+                </StyledLink>
+                {/* <StyledLink to="/messages">
                     <NavItem>Wiadomości</NavItem>
                 </StyledLink> */}
                 <NavButton>

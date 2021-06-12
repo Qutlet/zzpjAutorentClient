@@ -20,21 +20,21 @@ export class MyOfferItem extends Component {
         border: "none"
         }
     }
-    // deleteCar = () => {
-    //     axios.delete('http://localhost:8080/cars/'+ this.state.carID,{headers: {
-    //         'Content-Type': 'application/json',
-    //         // 'auth-token': this.props.userdata.authToken
-    //     }})
-    //     .then((res) => {
-    //         // console.log(res.data)
-    //         window.location.reload()
-    //      })
-    //      .catch(err => {
-    //          console.log(this.state.carID)
-    //          console.log(err)
-    //      });
+    deleteOffer = () => {
+        axios.delete('http://localhost:8080/offers/'+ this.state.offerID,{headers: {
+            'Content-Type': 'application/json',
+            // 'auth-token': this.props.userdata.authToken
+        }})
+        .then((res) => {
+            // console.log(res.data)
+            window.location.reload()
+         })
+         .catch(err => {
+             console.log(this.state.carID)
+             console.log(err)
+         });
          
-    // }
+    }
 
     render() {
         return (
@@ -44,8 +44,7 @@ export class MyOfferItem extends Component {
                <td>{this.props.offer.offerName}</td>
                <td>{this.props.offer.offerName}</td>
                <td> 
-                   <ButtonContainer
-                        >
+                   <ButtonContainer onClick={() => this.deleteOffer()}>
                         Usuń
                    </ButtonContainer>
                </td>
