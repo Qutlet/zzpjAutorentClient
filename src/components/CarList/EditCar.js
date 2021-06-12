@@ -41,7 +41,6 @@ export default class AddCar extends Component {
     },{
             headers: {
                 // 'auth-token':this.props.userdata.authToken
-                'image-path':'C:\\Users\\macie\\Desktop\\uml2.png'
             }
         })
         // .then(function (response) {

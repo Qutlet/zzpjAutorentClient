@@ -49,16 +49,16 @@ export class MyOfferItem extends Component {
                    </ButtonContainer>
                </td>
                <td> 
-                   {/* <Link to={{
-                            pathname: 'cars/edit' ,
+                   <Link to={{
+                            pathname: 'offers/edit' ,
                             state: {
-                                id: this.props.car.id
+                                id: this.props.offer.id
                             }
-                            }}> */}
+                            }}>
                    <ButtonContainer>  
                         Edytuj
                    </ButtonContainer>
-                   {/* </Link> */}
+                   </Link>
                </td>
             </tr>
         )

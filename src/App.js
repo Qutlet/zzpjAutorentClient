@@ -33,6 +33,7 @@ import UserStore from './components/Stores/UserStore'
 import RegisterForm from "./components/RegisterForm";
 import MyOffers from "./components/Offer/MyOffers";
 import { CarList } from "./components/CarList/CarList";
+import EditOffer from "./components/Offer/EditOffer";
 
 class App extends Component{
   render(){
@@ -70,6 +71,7 @@ class App extends Component{
               !UserStore.isLoggedIn() ? (<Redirect to="/login"/>) : (<GetCar userdata={UserStore}/>) )}/>   */}
             <Route exact path="/add-car" component={AddCar} />
             <Route exact path="/cars/edit" component={EditCar} />
+            <Route exact path="/offers/edit" component={EditOffer} />
 			{/* <Route exact path="/cars/{id}" component={EditCar} render={() => (
               !UserStore.isLoggedIn() ? (<Redirect to="/login"/>) : (<EditCar userdata={UserStore}/>) )}/> 
 			<Route exact path="/cars/rent/{id}" component={RentCar} render={() => (
