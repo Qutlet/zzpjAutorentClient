@@ -5,6 +5,8 @@ import {ButtonContainer} from './Button'
 import axios from 'axios'
 import { values } from 'mobx'
 import PayPalButton from '../components/Favourites/PayPalButton'
+import Places from './Places'
+import Comment from './Comments'
 
 
 
@@ -13,7 +15,9 @@ export default class  extends Component {
        super(props)
        this.state = {
         offer: [],
+        comments: [],
         car: [],
+        places: [],
         count: 0
        }
    }
@@ -52,9 +56,10 @@ componentDidMount = () => {
                 }
             })
             .then(  (response) => {
-                console.log(response.data)
+                console.log(response.data.commentList)
                 this.setState({
                     car: response.data,
+                    comments: response.data.commentList,
                     count : 0
                 })
             })
@@ -63,13 +68,38 @@ componentDidMount = () => {
 
     axios.get('http://localhost:8080/api/places')
         .then((response) => {
-            console.log(response.data)
+            console.log(response.data.features)
+            this.setState({
+                places: response.data.features
+            })
         })
         .catch(function (error){
             console.log(error);
         });
     
 
+}
+
+renderPlaces = () => {
+    if(this.state.places.length == 0){
+        return
+    }
+    return this.state.places.map(places => {
+        return (
+            <Places key={places.id} places={places}/>
+        )
+    })
+}
+
+renderComments = () => {
+    if(this.state.comments.length == 0){
+        return
+    }
+    return this.state.comments.map(comments => {
+        return (
+            <Comment key={comments.id} comments={comments}/>
+        )
+    })
 }
 
 render() {
@@ -126,6 +156,7 @@ render() {
                                         Informacje od właściciela:
                                     </h3>
                                     <p className="text-muted lead">{this.state.offer.description}</p>
+                                    <div className="row">{this.renderComments()}</div>
                                     <div>
                                         <Link to="/avaliableOffers">
                                             <ButtonContainer>
@@ -164,11 +195,17 @@ render() {
                                                     
                                                 
                                             }}>
-                                                {this.state.car.inFavourites?"Polubiono":"Dodaj do polubionych"}
+                                                
                                             </ButtonContainer> 
                                             )}
                                             
                                         </ProductConsumer>
+
+                                        <div className="row">
+                                            {
+                                                this.renderPlaces()}
+                                            
+                                        </div>
                                     </div>
                                 </div>
                             </div>
