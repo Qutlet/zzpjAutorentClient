@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import MyOfferItem from './MyOfferItem';
+import { AdminOfferItem } from './AdminOfferItem';
 
-export default class MyOffers extends Component {
+export default class GetAllOffers extends Component {
 
 
     state  = {
@@ -15,13 +15,13 @@ export default class MyOffers extends Component {
         }
         return this.state.offers.map(offers => {
             return (
-                <MyOfferItem key={offers.id} offer={offers}></MyOfferItem>
+                <AdminOfferItem key={offers.id} offer={offers}></AdminOfferItem>
             )
         })
     }
 
     componentDidMount = () => {
-        axios.get('http://localhost:8080/offers')  // /active' + this.props.userdate.userID
+        axios.get('http://localhost:8080/offers')
         .then(  (response) => {
             console.log(response.data)
             this.setState({
@@ -54,15 +54,14 @@ export default class MyOffers extends Component {
         return (
 
             <div>
-                <h1 style={{textAlign: "center"}}>Twoje oferty</h1>
                 <table style={this.getTableStyle()}>
                 <thead style={this.getTableHeaderStyle()}>
                 <tr>
                <td>Nazwa</td>
                <td>Samochod</td>
-               <td>Koszt</td>
+               <td>Aktywna</td>
                <td>Usuń</td>
-               <td>Edytuj</td>
+               {/* <td>Edytuj</td> */}
                    
                
                 </tr>
@@ -72,21 +71,6 @@ export default class MyOffers extends Component {
                 </tbody>
         </table>
             </div>
-
-            // <React.Fragment>
-            //     <div className="py-5">
-            //         <div className="container">
-            //             <Title name="dostępne" title="oferty" />
-            //             <div className="row">
-            //                 {
-            //                     this.renderOffers()
-            //                 }
-            //             </div>
-                        
-            //         </div>
-            //     </div>
-            // </React.Fragment>
-            //<Product></Product>
         );
     }
 }

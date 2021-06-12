@@ -9,5 +9,3 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 var storage = firebase.storage();
 export default storage;
-
-//AIzaSyBKRJgZ3cdJkP6MyEvF-utoX9xREKQBwwE

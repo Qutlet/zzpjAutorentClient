@@ -109,19 +109,14 @@ export default class EditOffer extends Component {
                 <form onSubmit={this.handleSubmit}>
                 <label for="fname" style={this.getLabelStyle()}>Tytul:</label>
                 <input type="text" style={this.getInputStyle()} id="fname" name="offerName" placeholder={this.state.offer.offerName}/>
-
                 <label for="fname" style={this.getLabelStyle()}>Opis:</label>
                 <input type="text" style={this.getInputStyle()} id="fname" name="description" placeholder={this.state.offer.description}/>
-				
 				<label for="fname" style={this.getLabelStyle()}>Cena:</label>
                 <input type="text" style={this.getInputStyle()} id="fname" name="price" placeholder={this.state.offer.price}/>
-
                 <label for="fname" style={this.getLabelStyle()}>Numer telefonu:</label>
                 <input type="text" style={this.getInputStyle()} id="fname" name="phone" placeholder={this.state.offer.phone}/>
-
                 <label for="fname" style={this.getLabelStyle()}>E-mail:</label>
-                <input type="text" style={this.getInputStyle()} id="fname" name="email" placeholder={this.state.offer.email}/>
-                
+                <input type="text" style={this.getInputStyle()} id="fname" name="email" placeholder={this.state.offer.email}/>                
                 <input 
                 type="submit"
                 value="Edytuj oferte"
@@ -130,9 +125,6 @@ export default class EditOffer extends Component {
                 />
                 </form>
                 </div>
-                
-                        
-                
             </React.Fragment>
                            
         )

@@ -4,9 +4,9 @@ import { observer } from 'mobx-react'
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Navbar from './components/Navbar'
-import ProductList from './components/ProductList'
+
 // import GetOffersById from './components/GetOffersById'
-// import GetAllOffers from './components/GetAllOffers'
+import GetAllOffers from "./components/Admin/GetAllOffers";
 // import GetAllNoRentedOffers from './comments/GetAllNoRentedOffers'
 import AddOffer from './components/AddOffer/AddOffer'
 // import RentCar from './components/RentCar'
@@ -72,6 +72,7 @@ class App extends Component{
             <Route exact path="/add-car" component={AddCar} />
             <Route exact path="/cars/edit" component={EditCar} />
             <Route exact path="/offers/edit" component={EditOffer} />
+            <Route exact path="/admin/offers" component={GetAllOffers} />
 			{/* <Route exact path="/cars/{id}" component={EditCar} render={() => (
               !UserStore.isLoggedIn() ? (<Redirect to="/login"/>) : (<EditCar userdata={UserStore}/>) )}/> 
 			<Route exact path="/cars/rent/{id}" component={RentCar} render={() => (
