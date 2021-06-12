@@ -1,0 +1,93 @@
+<table style={{display: 'flex', background: 'red', width: "100%"}}>
+                <tbody>
+                <tr><td>Marka:</td>
+                <td><form>
+                    <input
+                    type="text"
+                    name="brand"/>
+                </form></td>
+                </tr>
+                <tr><td>Model:</td>
+                <td><form>
+                    <input
+                    type="text"
+                    name="model"/>
+                </form></td>
+                </tr>
+                <tr><td>Moc:</td>
+                <td><form>
+                    <input
+                    type="text"
+                    name="power"/>
+                </form></td>
+                </tr>
+                <tr><td>Silnik:</td>
+                <td><form>
+                    <input
+                    type="text"
+                    name="engine"/>
+                </form></td>
+                </tr>
+                <tr><td>Kolor:</td>
+                <td><form>
+                    <input
+                    type="text"
+                    name="color"/>
+                </form></td>
+                </tr>
+                <tr><td>Paliwo:</td>
+                <td><form>
+                    <input
+                    type="text"
+                    name="fuel"/>
+                </form></td>
+                </tr>
+                <tr><td>Stan techniczny:</td>
+                <td><form>
+                    <input
+                    type="text"
+                    name="technical_state"/>
+                </form></td>
+                </tr>
+                <tr><td>Kraj pochodzenia:</td>
+                <td><form>
+                    <input
+                    type="text"
+                    name="country_origin"/>
+                </form></td>
+                </tr>
+                <tr><td>Stan techniczny:</td>
+                <td><form>
+                    <input
+                    type="text"
+                    name="technical_state"/>
+                </form></td>
+                </tr>
+                <tr><td>Lokalizacja:</td>
+                <td><form>
+                    <input
+                    type="text"
+                    name="location"/>
+                </form></td>
+                </tr>
+                <tr><td>Cena:</td>
+                <td><form>
+                    <input
+                    type="text"
+                    name="price"/>
+                </form></td>
+                </tr>
+                <tr><td>Opis:</td>
+                <td><form>
+                    <input
+                    type="text"
+                    name="description"/>
+                </form></td>
+                </tr>
+                
+                <tr><button style={{display: 'flex'}}/>
+                </tr>
+                
+                    </tbody>
+                
+                </table>    
