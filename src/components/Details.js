@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import {ProductConsumer} from '../context'
 import {Link} from 'react-router-dom'
-import {ButtonContainer} from './Button'
+import {ButtonContainer, ButtonChatContainer, ButtonComment} from './Button'
 import axios from 'axios'
 import { values } from 'mobx'
 import PayPalButton from '../components/Favourites/PayPalButton'
@@ -99,8 +99,6 @@ handleSubmit = (event) =>{
     .catch(function (error){
         console.log(error);
     });
-
-
 }
 
 renderPlaces = () => {
@@ -125,10 +123,6 @@ renderComments = () => {
         })
     }
 }
-
-refreshPage = ()=>{
-    window.location.reload();
- }
 
 render() {
     return (
@@ -177,7 +171,7 @@ render() {
                                     </h4>
                                     <h3 className="text-blue">
                                         <strong>
-                                            Cena: {this.state.car.price}zł/dzień
+                                            Cena: {this.state.offer.price}zł/dzień
                                         </strong>
                                     </h3>
                                     <h3 className="text-capitalize font-weight-bold mt-3 mb-0">
@@ -200,6 +194,11 @@ render() {
                                             <ButtonContainer>
                                                 Powrót
                                             </ButtonContainer>
+                                        </Link>
+                                        <Link to="/chat">
+                                            <ButtonChatContainer>
+                                                Spytaj o dostępność
+                                            </ButtonChatContainer>
                                         </Link>
 
                                         <div className="d-flex justify-content-center"  >
@@ -279,32 +278,4 @@ margin-bottom: 10px;
     height: 50px;
     font-size: 10px;
 }
-`;
-
-export const ButtonComment = styled.button`
-text-transform: capitalize;
-font-size:1rem;
-background: transparent;
-border: 0.2rem solid var(--lightBlue);
-border-color: ${props => props.fav? "var(--mainYellow)":"var(--lightBlue)"};
-color:${prop => prop.fav?"var(--mainYellow)":"var(--lightBlue)"};
-border-radius: 0.5rem;
-padding: 0.2rem 0.5rem;
-coursor:pointer;
-justify-content: center;
-margin: 0.2rem 1.5rem 0.2rem 22rem;
-transition:all 0.5s ease-in-out;
-&:hover{
-    background:${prop=>prop.fav? "var(--mainYellow)":"var(--lightBlue)"};
-    color:var(--mainBlue);
-}
-&:focus{
-    outline:none;
-}
-
-@media screen and (max-width: 480px){
-    font-size:0.5rem;
-    margin: 0.2rem 1.5rem 0.2rem 10rem;
-}
-
 `;

@@ -34,6 +34,7 @@ import RegisterForm from "./components/RegisterForm";
 import MyOffers from "./components/Offer/MyOffers";
 import { CarList } from "./components/CarList/CarList";
 import EditOffer from "./components/Offer/EditOffer";
+import Chat from './components/Chat';
 
 class App extends Component{
   render(){
@@ -96,6 +97,7 @@ class App extends Component{
             <Route exact path="/myoffers" component={MyOffers} />
             <Route path="/register" component={RegisterForm} ></Route>
             <Route exact path="/details" component={Details} />
+            <Route path="/chat" component={Chat}/>
             <Route component={Default}></Route>
         </Switch>
         <Modal />

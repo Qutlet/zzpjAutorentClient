@@ -37,7 +37,7 @@ export const CommentWrap = styled.div`
     
     @media screen and (max-width: 480px){
         width: 200px;
-        height: 50px;
+        height: 100px;
         font-size: 10px;
     }
 `;
