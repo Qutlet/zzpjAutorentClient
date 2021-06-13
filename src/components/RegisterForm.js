@@ -43,9 +43,12 @@ export class RegisterForm extends Component {
         this.setState({
             buttonDisabled:true
         })
-        axios.post('', {
-            name: this.state.name,
-            password: this.state.password
+        axios.post('http://localhost:8080/register', {
+            firstName: this.state.name,
+            lastName: this.state.name,
+            password: this.state.password,
+            matchingPassword: this.state.password,
+            email: this.state.name
           })
           .then(function (response) {
             console.log(response.data);

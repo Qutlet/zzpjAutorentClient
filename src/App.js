@@ -53,7 +53,8 @@ class App extends Component{
               !UserStore.isLoggedIn() ? (<Redirect to="/login"/>) : (<GetOffersById userdata={UserStore}/>) )}/>
 			<Route exact path="/offers/all" component={GetAllOffers} render={() => (
               !UserStore.isLoggedIn() ? (<Redirect to="/login"/>) : (<GetAllOffers userdata={UserStore}/>) )}/>*/
-			<Route exact path="/avaliableOffers" component={AllNoRentedOffers} />  
+			<Route exact path="/avaliableOffers" render={() => (
+        !UserStore.isLoggedIn() ? (<Redirect to="/login"/>) : (<AllNoRentedOffers userdata={UserStore}/>) )}/> 
         
       //<Route exact path="/details" component={Details} />
               /*  
@@ -93,8 +94,10 @@ class App extends Component{
 			<Route exact path="/comments/{carID}" component={DeleteComment} render={() => (
               !UserStore.isLoggedIn() ? (<Redirect to="/login"/>) : (<DeleteComment userdata={UserStore}/>) )}/> */}
             <Route path="/login" component={LoginForm} />
-            <Route exact path="/offers" component={AddOffer} />
-            <Route exact path="/myoffers" component={MyOffers} />
+            <Route exact path="/offers" component={AddOffer} render={() => (
+              !UserStore.isLoggedIn() ? (<Redirect to="/login"/>) : (<AddOffer userdata={UserStore}/>) )}/>
+            <Route exact path="/myoffers" render={() => (
+        !UserStore.isLoggedIn() ? (<Redirect to="/login"/>) : (<MyOffers userdata={UserStore}/>) )}/> 
             <Route path="/register" component={RegisterForm} ></Route>
             <Route exact path="/details" component={Details} />
             <Route path="/chat" component={Chat}/>

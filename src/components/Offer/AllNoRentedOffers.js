@@ -41,9 +41,13 @@ export default class AllNoRentedOffers extends Component {
 
 
     componentDidMount = () => {
+
+            console.log(this.props.userdata.accessToken )
+
+
         axios.get('http://localhost:8080/offers',{
             headers : {
-                //'language':'pl'  
+                'Authorization':'Bearer '+this.props.userdata.accessToken
 		    }
         })
         .then(  (response) => {

@@ -96,17 +96,20 @@ export default class Navbar extends Component{
                 <Link to='/'>
                     <img src={car_logo} alt="store" className="nav-img"/>
                 </Link>
-                <NavButton>Zaloguj</NavButton>
+                <NavButton><StyledLink onClick={this.logout} to="/login">
+                        Zaloguj
+                    </StyledLink></NavButton>
             </NavWrapper>
         );
     }
 
     render(){
-        //if (this.props.userdata.isLoggedIn()) {
+        console.log(this.props)
+        if (this.props.userdata.isLoggedIn()) {
            return this.renderLoggedInNav();
-      //  } else {
-        //    return this.renderNotLoggedInNav();
-      //  } 
+       } else {
+           return this.renderNotLoggedInNav();
+       } 
                 {/*
                 <ul className="navbar-nav align-items-center">
                     <li className="nav-item ml-5">

@@ -4,7 +4,7 @@ import { extendObservable } from 'mobx';
 */
 class UserStore {
     isLoggedIn() {
-        if (!UserStore.authToken) {
+        if (!UserStore.accessToken) {
             return false;
         }
         return true;
@@ -12,37 +12,44 @@ class UserStore {
     
     logout() {
         window.localStorage.removeItem('userdata');
-        UserStore.authToken = ""
-        UserStore.permissionLevel = 0
+        UserStore.accessToken = ""
+        UserStore.roles = []
+        UserStore.userId = ""
     }
 
-    login(permission_level, token){
-        UserStore.authToken = token
-        UserStore.permissionLevel = permission_level
+    login(roles, accessToken,userId){
+        UserStore.accessToken = accessToken
+        UserStore.roles = roles
+        UserStore.userId = userId
+
 
         let userdata = {
-            token: token,
-            permission_level: permission_level
+            accessToken: accessToken,
+            roles: roles,
+            userId:userId
         }
 
         window.localStorage.setItem('userdata', JSON.stringify(userdata));
     }
     
     constructor() {
-        let token = '';
-        let permission_level = 0;
+        let accessToken = '';
+        let roles = [];
+        let userId = "";
 
         const userdata = window.localStorage.getItem('userdata');
         if (userdata !== null) {
-            ({token, permission_level} = JSON.parse(userdata));
+            ({accessToken, roles,userId} = JSON.parse(userdata));
         }
 
-        UserStore.authToken = token
-        UserStore.permissionLevel = permission_level
+        UserStore.accessToken = accessToken
+        UserStore.roles = roles
+        UserStore.userId = userId
 
         extendObservable(this, {
-            authToken: token,
-            permissionLevel: permission_level
+            accessToken: accessToken,
+            roles: roles,
+            userId:userId
         })
     }
 }

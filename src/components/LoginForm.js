@@ -41,12 +41,13 @@ export class LoginForm extends Component {
         this.setState({
             buttonDisabled:true
         })
-        axios.post('', {
-            name: this.state.name,
+        axios.post('http://localhost:8080/signin', {
+            username: this.state.name,
             password: this.state.password
           })
           .then((response) => {
-              UserStore.login(response.data.permission_level, response.data.token);
+              console.log( response.data.userId)
+              UserStore.login(response.data.roles, response.data.accessToken,response.data.userId);
               this.props.history.push('/');
               alert('Zalogowano pomyślnie!');
           })

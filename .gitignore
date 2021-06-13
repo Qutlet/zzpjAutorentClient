@@ -3,3 +3,4 @@ node_modules
 *.cmd
 *.ps1
 node_modules/.bin/atob
+node_modules

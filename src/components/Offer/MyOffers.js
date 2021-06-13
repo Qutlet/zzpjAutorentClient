@@ -21,7 +21,12 @@ export default class MyOffers extends Component {
     }
 
     componentDidMount = () => {
-        axios.get('http://localhost:8080/offers')  // /active' + this.props.userdate.userID
+        console.log(this.props.userdata)
+        axios.get('http://localhost:8080/offers/active/' + this.props.userdata.userId,{
+            headers : {
+                'Authorization':'Bearer '+this.props.userdata.accessToken
+		    }
+        })  // /active' + this.props.userdate.userID
         .then(  (response) => {
             console.log(response.data)
             this.setState({
