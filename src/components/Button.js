@@ -8,8 +8,8 @@ export const ButtonContainer = styled.button`
     border-color: ${props => props.fav? "var(--mainYellow)":"var(--lightBlue)"};
     color:${prop => prop.fav?"var(--mainYellow)":"var(--lightBlue)"};
     border-radius: 0.5rem;
-    paddibg: 0.2rem 0.5rem;
-    courson:pointer;
+    padding: 0.2rem 0.5rem;
+    coursor:pointer;
     margin:0.2rem 0.5rem 0.2rem 0;
     transition:all 0.5s ease-in-out;
     &:hover{

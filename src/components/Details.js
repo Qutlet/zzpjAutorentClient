@@ -7,6 +7,7 @@ import { values } from 'mobx'
 import PayPalButton from '../components/Favourites/PayPalButton'
 import Places from './Places'
 import Comment from './Comments'
+import styled from 'styled-components'
 
 
 
@@ -76,13 +77,31 @@ componentDidMount = () => {
         .catch(function (error){
             console.log(error);
         });
-
-
-    
-
 }
 
+handleSubmit = (event) =>{
+    //console.log(this.state.value2);
+    event.preventDefault();
+    axios.post('http://localhost:8080/comments', {
+        carID: this.state.offer.carID,
+        clientID: null,
+        id: "1",
+        message: event.target.message.value,
+        time: new Date(),
+    },{
+        headers : {
+           // 'auth-token':this.props.userdata.authToken  
+        }
+    })
+    .then(function (response){
+        console.log(response);
+    })
+    .catch(function (error){
+        console.log(error);
+    });
 
+
+}
 
 renderPlaces = () => {
     if(this.state.places.length == 0){
@@ -106,6 +125,10 @@ renderComments = () => {
         })
     }
 }
+
+refreshPage = ()=>{
+    window.location.reload();
+ }
 
 render() {
     return (
@@ -163,6 +186,15 @@ render() {
                                     <p className="text-muted lead">{this.state.offer.description}</p>
                                     <h5 className="font-weight-bold mt-3 mb-0"> Komentarze:</h5>
                                     <div className="row">{this.renderComments()}</div>
+                                    <div >
+                                        <form onSubmit={this.handleSubmit}>
+                                            <TextLabel for='message'>Dodaj komentarz:</TextLabel>
+                                            <InputWindow type="text" id="inmessage" name="message" placeholder="Opisz swoje doświadczenia"/>
+                                            <ButtonComment type="submit" onClick={() => {window.location.href="/details"}}>
+                                            Dodaj
+                                            </ButtonComment>
+                                        </form>
+                                    </div>
                                     <div>
                                         <Link to="/avaliableOffers">
                                             <ButtonContainer>
@@ -219,3 +251,60 @@ render() {
     )
 }
 }
+
+
+export const TextLabel = styled.label`
+width: 60%;
+textAlign: right;
+font-weight: bold;
+padding: 5px 0px;
+margin: 8px 0;
+display: inline-block;
+boxSizing: border-box;
+text-transform: none;
+`;
+
+export const InputWindow = styled.input`
+width: 400px;
+height: 100px;
+font-weight: bold;
+margin: 8px 0;
+display: inline-block;
+boxSizing: border-box;
+text-transform: none;
+margin-bottom: 10px;
+
+@media screen and (max-width: 480px){
+    width: 200px;
+    height: 50px;
+    font-size: 10px;
+}
+`;
+
+export const ButtonComment = styled.button`
+text-transform: capitalize;
+font-size:1rem;
+background: transparent;
+border: 0.2rem solid var(--lightBlue);
+border-color: ${props => props.fav? "var(--mainYellow)":"var(--lightBlue)"};
+color:${prop => prop.fav?"var(--mainYellow)":"var(--lightBlue)"};
+border-radius: 0.5rem;
+padding: 0.2rem 0.5rem;
+coursor:pointer;
+justify-content: center;
+margin: 0.2rem 1.5rem 0.2rem 22rem;
+transition:all 0.5s ease-in-out;
+&:hover{
+    background:${prop=>prop.fav? "var(--mainYellow)":"var(--lightBlue)"};
+    color:var(--mainBlue);
+}
+&:focus{
+    outline:none;
+}
+
+@media screen and (max-width: 480px){
+    font-size:0.5rem;
+    margin: 0.2rem 1.5rem 0.2rem 10rem;
+}
+
+`;
