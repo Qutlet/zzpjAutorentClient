@@ -32,8 +32,10 @@ import Modal from './components/Modal'
 import UserStore from './components/Stores/UserStore'
 import RegisterForm from "./components/RegisterForm";
 import MyOffers from "./components/Offer/MyOffers";
+import MyRent from "./components/Offer/MyRent";
 import { CarList } from "./components/CarList/CarList";
 import EditOffer from "./components/Offer/EditOffer";
+import EndOffer from "./components/Offer/EndOffer";
 import Chat from './components/Chat';
 
 class App extends Component{
@@ -47,6 +49,12 @@ class App extends Component{
         />
         
         <Switch>
+ )}/> */}
+
+        <Route exact path="/offer/end" render={() => (
+        !UserStore.isLoggedIn() ? (<Redirect to="/login"/>) : (<EndOffer userdata={UserStore}/>) )}/>
+          <Route exact path="/myrents" render={() => (
+        !UserStore.isLoggedIn() ? (<Redirect to="/login"/>) : (<MyRent userdata={UserStore}/>) )}/> 
              <Route exact path="/" render={(props) => (
               !UserStore.isLoggedIn() ? (<Redirect to="/login"/>) : (<AllNoRentedOffers {...props} userdata={UserStore}/>) )}/>
           
@@ -69,6 +77,7 @@ class App extends Component{
               !UserStore.isLoggedIn() ? (<Redirect to="/login"/>) : (<AddOffer {...props} userdata={UserStore}/>) )}/>
             <Route exact path="/myoffers" render={(props) => (
         !UserStore.isLoggedIn() ? (<Redirect to="/login"/>) : (<MyOffers {...props} userdata={UserStore}/>) )}/> 
+
             <Route path="/register" component={RegisterForm} ></Route>
               
             <Route exact path="/details"  render={(props) => (
