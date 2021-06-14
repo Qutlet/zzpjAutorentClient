@@ -31,17 +31,17 @@ export default class  extends Component {
 componentDidMount = () => {
     //const id =  this.props.location.state
     
-    
+    console.log(this.props)
     const  id  = this.props.location.state.id
     const countValue = this.state.count
 
-    console.log(id)
+    
     
     const link2 = 'http://localhost:8080/offers/' + id;
 
     axios.get(link2,{
         headers : {
-            'language':'pl'  
+            'Authorization':'Bearer '+this.props.userdata.accessToken
         }
     })
     .then(  (response) => {
@@ -53,7 +53,7 @@ componentDidMount = () => {
             console.log(link)
             axios.get(link,{
                 headers : {
-                    'language':'pl'  
+                    'Authorization':'Bearer '+this.props.userdata.accessToken
                 }
             })
             .then(  (response) => {
@@ -67,7 +67,11 @@ componentDidMount = () => {
 
     })
 
-    axios.get('http://localhost:8080/api/places')
+    axios.get('http://localhost:8080/api/places',{
+        headers : {
+            'Authorization':'Bearer '+this.props.userdata.accessToken
+        }
+    })
         .then((response) => {
             console.log(response.data.features)
             this.setState({
@@ -90,7 +94,7 @@ handleSubmit = (event) =>{
         time: new Date(),
     },{
         headers : {
-           // 'auth-token':this.props.userdata.authToken  
+            'Authorization':'Bearer '+this.props.userdata.accessToken
         }
     })
     .then(function (response){

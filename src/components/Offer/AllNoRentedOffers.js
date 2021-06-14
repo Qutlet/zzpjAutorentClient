@@ -42,7 +42,7 @@ export default class AllNoRentedOffers extends Component {
 
     componentDidMount = () => {
 
-            console.log(this.props.userdata.accessToken )
+            console.log(this.props )
 
 
         axios.get('http://localhost:8080/offers',{

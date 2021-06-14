@@ -49,64 +49,42 @@ class App extends Component{
         />
         
         <Switch>
-            {/* <Route exact path="/" render={() => (
-              !UserStore.isLoggedIn() ? (<Redirect to="/login"/>) : (<ProductList userdata={UserStore}/>) )}/>
-            <Route exact path="/offers/{id}" component={GetOffersById} render={() => (
-              !UserStore.isLoggedIn() ? (<Redirect to="/login"/>) : (<GetOffersById userdata={UserStore}/>) )}/>
-			<Route exact path="/offers/all" component={GetAllOffers} render={() => (
-              !UserStore.isLoggedIn() ? (<Redirect to="/login"/>) : (<GetAllOffers userdata={UserStore}/>) )}/>*/
-			<Route exact path="/avaliableOffers" render={() => (
-        !UserStore.isLoggedIn() ? (<Redirect to="/login"/>) : (<AllNoRentedOffers userdata={UserStore}/>) )}/> 
-		
-      //<Route exact path="/details" component={Details} />
-              /*  
-            <Route exact path="/offers" component={AddOffer} render={() => (
-              !UserStore.isLoggedIn() ? (<Redirect to="/login"/>) : (<AddOffer userdata={UserStore}/>) )}/>
-			<Route exact path="/offers/rent/{userid}/{id}" component={RentOffer} render={() => (
-              !UserStore.isLoggedIn() ? (<Redirect to="/login"/>) : (<RentOffer userdata={UserStore}/>) )}/>
-			<Route exact path="/offers/return/{userid}/{id}" component={ReturnCar} render={() => (
-              !UserStore.isLoggedIn() ? (<Redirect to="/login"/>) : (<ReturnCar userdata={UserStore}/>) )}/>
-			<Route exact path="/offers/{id}" component={DeleteOffer} render={() => (
-              !UserStore.isLoggedIn() ? (<Redirect to="/login"/>) : (<DeleteOffer userdata={UserStore}/>) )}/>
-			<Route exact path="/offers/{id}" component={EditOffer} render={() => (
-              !UserStore.isLoggedIn() ? (<Redirect to="/login"/>) : (<EditOffer userdata={UserStore}/>) )}/> */}
-			<Route exact path="/cars" component={CarList} />
-			{/* <Route exact path="/cars/{id}" component={GetCar} render={() => (
-              !UserStore.isLoggedIn() ? (<Redirect to="/login"/>) : (<GetCar userdata={UserStore}/>) )}/>   */}
-            <Route exact path="/add-car" component={AddCar} />
-            <Route exact path="/cars/edit" component={EditCar} />
-            <Route exact path="/offers/edit" component={EditOffer} />
-            <Route exact path="/admin/offers" component={GetAllOffers} />
-			{/* <Route exact path="/cars/{id}" component={EditCar} render={() => (
-              !UserStore.isLoggedIn() ? (<Redirect to="/login"/>) : (<EditCar userdata={UserStore}/>) )}/> 
-			<Route exact path="/cars/rent/{id}" component={RentCar} render={() => (
-              !UserStore.isLoggedIn() ? (<Redirect to="/login"/>) : (<RentCar userdata={UserStore}/>) )}/>  
-			<Route exact path="/cars/{id}" component={DeleteCar} render={() => (
-              !UserStore.isLoggedIn() ? (<Redirect to="/login"/>) : (<DeleteCar userdata={UserStore}/>) )}/>  
-			<Route exact path="/cars/available" component={GetAllNoRentedCars} render={() => (
-              !UserStore.isLoggedIn() ? (<Redirect to="/login"/>) : (<GetAllNoRentedCars userdata={UserStore}/>) )}/>  
-			<Route exact path="/comments" component={GetAllComments} render={() => (
-              !UserStore.isLoggedIn() ? (<Redirect to="/login"/>) : (<GetAllComments userdata={UserStore}/>) )}/> 
-			<Route exact path="/comments/{id}" component={GetCommentById} render={() => (
-              !UserStore.isLoggedIn() ? (<Redirect to="/login"/>) : (<GetCommentById userdata={UserStore}/>) )}/>
-			<Route exact path="/comments/car/{carID}" component={GetCommentsByCarId} render={() => (
-              !UserStore.isLoggedIn() ? (<Redirect to="/login"/>) : (<GetCommentsByCarId userdata={UserStore}/>) )}/>
-			<Route exact path="/comments" component={AddComment} render={() => (
-              !UserStore.isLoggedIn() ? (<Redirect to="/login"/>) : (<AddComment userdata={UserStore}/>) )}/>  
-			<Route exact path="/comments/{carID}" component={DeleteComment} render={() => (
-              !UserStore.isLoggedIn() ? (<Redirect to="/login"/>) : (<DeleteComment userdata={UserStore}/>) )}/> */}
-			<Route exact path="/offer/end" render={() => (
+ )}/> */}
+
+        <Route exact path="/offer/end" render={() => (
         !UserStore.isLoggedIn() ? (<Redirect to="/login"/>) : (<EndOffer userdata={UserStore}/>) )}/>
-            <Route path="/login" component={LoginForm} />
-            <Route exact path="/offers" component={AddOffer} render={() => (
-              !UserStore.isLoggedIn() ? (<Redirect to="/login"/>) : (<AddOffer userdata={UserStore}/>) )}/>
-            <Route exact path="/myoffers" render={() => (
-        !UserStore.isLoggedIn() ? (<Redirect to="/login"/>) : (<MyOffers userdata={UserStore}/>) )}/> 
-			<Route exact path="/myrents" render={() => (
+          <Route exact path="/myrents" render={() => (
         !UserStore.isLoggedIn() ? (<Redirect to="/login"/>) : (<MyRent userdata={UserStore}/>) )}/> 
+             <Route exact path="/" render={(props) => (
+              !UserStore.isLoggedIn() ? (<Redirect to="/login"/>) : (<AllNoRentedOffers {...props} userdata={UserStore}/>) )}/>
+          
+			<Route exact path="/avaliableOffers" render={(props) => (
+        !UserStore.isLoggedIn() ? (<Redirect to="/login"/>) : (<AllNoRentedOffers {...props} userdata={UserStore}/>) )}/> 
+       
+			<Route exact path="/cars" render={(props) => (
+        !UserStore.isLoggedIn() ? (<Redirect to="/login"/>) : (<CarList {...props} userdata={UserStore}/>) )}/> 
+		
+            <Route exact path="/add-car" render={(props) => (
+        !UserStore.isLoggedIn() ? (<Redirect to="/login"/>) : (<AddCar {...props} userdata={UserStore}/>) )}/> 
+            <Route exact path="/cars/edit" render={(props) => (
+        !UserStore.isLoggedIn() ? (<Redirect to="/login"/>) : (<EditCar {...props} userdata={UserStore}/>) )}/> 
+            <Route exact path="/offers/edit" render={(props) => (
+        !UserStore.isLoggedIn() ? (<Redirect to="/login"/>) : (<EditOffer {...props} userdata={UserStore}/>) )}/> 
+            <Route exact path="/admin/offers" render={(props) => (
+        !UserStore.isLoggedIn() ? (<Redirect to="/login"/>) : (<GetAllOffers {...props} userdata={UserStore}/>) )}/> 
+            <Route path="/login" component={LoginForm} />
+            <Route exact path="/offers" render={(props) => (
+              !UserStore.isLoggedIn() ? (<Redirect to="/login"/>) : (<AddOffer {...props} userdata={UserStore}/>) )}/>
+            <Route exact path="/myoffers" render={(props) => (
+        !UserStore.isLoggedIn() ? (<Redirect to="/login"/>) : (<MyOffers {...props} userdata={UserStore}/>) )}/> 
+
             <Route path="/register" component={RegisterForm} ></Route>
-            <Route exact path="/details" component={Details} />
-            <Route path="/chat" component={Chat}/>
+              
+            <Route exact path="/details"  render={(props) => (
+        !UserStore.isLoggedIn() ? (<Redirect to="/login"/>) : (<Details {...props} userdata={UserStore}/>) )}/> 
+
+            <Route path="/chat" render={(props) => (
+        !UserStore.isLoggedIn() ? (<Redirect to="/login"/>) : (<Chat {...props} userdata={UserStore}/>) )}/> 
             <Route component={Default}></Route>
         </Switch>
         <Modal />
