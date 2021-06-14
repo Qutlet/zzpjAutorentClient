@@ -32,8 +32,10 @@ import Modal from './components/Modal'
 import UserStore from './components/Stores/UserStore'
 import RegisterForm from "./components/RegisterForm";
 import MyOffers from "./components/Offer/MyOffers";
+import MyRent from "./components/Offer/MyRent";
 import { CarList } from "./components/CarList/CarList";
 import EditOffer from "./components/Offer/EditOffer";
+import EndOffer from "./components/Offer/EndOffer";
 import Chat from './components/Chat';
 
 class App extends Component{
@@ -55,7 +57,7 @@ class App extends Component{
               !UserStore.isLoggedIn() ? (<Redirect to="/login"/>) : (<GetAllOffers userdata={UserStore}/>) )}/>*/
 			<Route exact path="/avaliableOffers" render={() => (
         !UserStore.isLoggedIn() ? (<Redirect to="/login"/>) : (<AllNoRentedOffers userdata={UserStore}/>) )}/> 
-        
+		
       //<Route exact path="/details" component={Details} />
               /*  
             <Route exact path="/offers" component={AddOffer} render={() => (
@@ -93,11 +95,15 @@ class App extends Component{
               !UserStore.isLoggedIn() ? (<Redirect to="/login"/>) : (<AddComment userdata={UserStore}/>) )}/>  
 			<Route exact path="/comments/{carID}" component={DeleteComment} render={() => (
               !UserStore.isLoggedIn() ? (<Redirect to="/login"/>) : (<DeleteComment userdata={UserStore}/>) )}/> */}
+			<Route exact path="/offer/end" render={() => (
+        !UserStore.isLoggedIn() ? (<Redirect to="/login"/>) : (<EndOffer userdata={UserStore}/>) )}/>
             <Route path="/login" component={LoginForm} />
             <Route exact path="/offers" component={AddOffer} render={() => (
               !UserStore.isLoggedIn() ? (<Redirect to="/login"/>) : (<AddOffer userdata={UserStore}/>) )}/>
             <Route exact path="/myoffers" render={() => (
         !UserStore.isLoggedIn() ? (<Redirect to="/login"/>) : (<MyOffers userdata={UserStore}/>) )}/> 
+			<Route exact path="/myrents" render={() => (
+        !UserStore.isLoggedIn() ? (<Redirect to="/login"/>) : (<MyRent userdata={UserStore}/>) )}/> 
             <Route path="/register" component={RegisterForm} ></Route>
             <Route exact path="/details" component={Details} />
             <Route path="/chat" component={Chat}/>
