@@ -249,6 +249,14 @@ export default class extends Component {
                 </div>
               </div>
 
+              
+                
+                                        <PayPalButton 
+                                        total={this.state.offer.price * this.state.count}
+                                        offerID={this.state.offer.id}
+                                        userdata={this.props.userdata}  />
+
+
               <PayPalButton
                 total={this.state.offer.price * this.state.count}
                 offerID={this.state.offer.id}

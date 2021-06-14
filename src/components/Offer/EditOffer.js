@@ -33,15 +33,15 @@ export default class EditOffer extends Component {
         event.preventDefault();
         axios.put('http://localhost:8080/offers', {
             carID: this.state.offer.carID,
-			//ownerID: event.target.ownerID.value,
-			clientID: null,
+			ownerID: this.state.offer.ownerID,
+			clientID: this.state.offer.clientID,
 			price: event.target.price.value,
             offerName: event.target.offerName.value,
-            description: event.target.description.value,
+            description: this.state.offer.description,
 			//creationDate: event.target.creationDate.value,
             phone: event.target.phone.value,
             email: event.target.email.value,
-			rented: false,
+			rented: this.state.rented
             //categories: this.state.value2
         },{
             headers : {
@@ -54,7 +54,7 @@ export default class EditOffer extends Component {
         .catch(function (error){
             console.log(error);
         });
-        window.location.reload()
+        //window.location.reload()
 	}
     getInputStyle = () => {
         return {

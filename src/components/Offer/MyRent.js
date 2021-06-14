@@ -15,7 +15,7 @@ export default class MyRent extends Component {
         }
         return this.state.offers.map(offers => {
             return (
-                <MyRentsItem key={offers.id} offer={offers}></MyRentsItem>
+                <MyRentsItem key={offers.id} offer={offers} userdata={this.props.userdata}></MyRentsItem>
             )
         })
     }
@@ -64,8 +64,8 @@ export default class MyRent extends Component {
                 <thead style={this.getTableHeaderStyle()}>
                 <tr>
                <td>Nazwa</td>
-               <td>Samochod</td>
                <td>Koszt</td>
+               <td>Opis</td>
                <td>Oddaj</td>
                    
                

@@ -37,6 +37,35 @@ export default class AddCar extends Component {
           headers: {
             Authorization: "Bearer " + this.props.userdata.accessToken,
           },
+
+
+    state = {
+        value: 0};
+
+    componentDidMount = () => {
+        this.state.value = uuid()
+        console.log(this.state.value)
+    }
+
+    handleSubmit = (event) => {
+        
+        event.preventDefault();
+
+        axios.post('http://localhost:8080/cars/', {
+            ownerId: this.props.userdata.userId,
+            carName: event.target.carName.value,
+            carBrandName: event.target.carBrand.value,
+            carModelName: event.target.carModel.value,
+			isRented: false,
+            enginePower: event.target.enginePower.value,
+            engine: event.target.engine.value,
+            color: event.target.color.value,
+			gearBox: event.target.gearBox.value,
+            fuel: event.target.fuel.value,
+            country: event.target.country.value,
+    },{
+        headers : {
+            'Authorization':'Bearer '+this.props.userdata.accessToken
         }
       )
       // .then(function (response) {

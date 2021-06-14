@@ -56,7 +56,7 @@ CarListItems= () => {
 
     return this.state.carList.map(car => {
         return (
-            <CarListItem car={car}/>
+            <CarListItem car={car} userdata={this.props.userdata}/>
         );
     })
 }
@@ -79,7 +79,7 @@ componentDidMount = () => {
         }
     };
 
-    axios.get('http://localhost:8080/cars',{
+    axios.get('http://localhost:8080/cars/available/' + this.props.userdata.userId,{
         headers : {
             'Authorization':'Bearer '+this.props.userdata.accessToken
         }
