@@ -80,7 +80,8 @@ handleSubmit = (event) =>{
 }
 
 endOffer = () => {
-	axios.put('http://localhost:8080/offer/return/' + this.props.userdata.userId + '/' + this.props.location.state.id , {
+	console.log(this.props.userdata.accessToken)
+	axios.put('http://localhost:8080/offers/return/' + this.props.userdata.userId + '/' + this.props.location.state.id , {
 		headers : {
 				'Authorization':'Bearer '+this.props.userdata.accessToken
 			}
