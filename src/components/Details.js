@@ -67,7 +67,11 @@ componentDidMount = () => {
 
     })
 
-    axios.get('http://localhost:8080/api/places')
+    axios.get('http://localhost:8080/api/places',{
+        headers : {
+            'Authorization':'Bearer '+this.props.userdata.accessToken
+        }
+    })
         .then((response) => {
             console.log(response.data.features)
             this.setState({

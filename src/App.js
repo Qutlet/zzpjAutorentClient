@@ -65,7 +65,7 @@ class App extends Component{
             <Route exact path="/admin/offers" render={(props) => (
         !UserStore.isLoggedIn() ? (<Redirect to="/login"/>) : (<GetAllOffers {...props} userdata={UserStore}/>) )}/> 
             <Route path="/login" component={LoginForm} />
-            <Route exact path="/offers" component={AddOffer} render={(props) => (
+            <Route exact path="/offers" render={(props) => (
               !UserStore.isLoggedIn() ? (<Redirect to="/login"/>) : (<AddOffer {...props} userdata={UserStore}/>) )}/>
             <Route exact path="/myoffers" render={(props) => (
         !UserStore.isLoggedIn() ? (<Redirect to="/login"/>) : (<MyOffers {...props} userdata={UserStore}/>) )}/> 
