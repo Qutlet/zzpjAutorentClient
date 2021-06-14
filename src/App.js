@@ -49,12 +49,11 @@ class App extends Component{
         />
         
         <Switch>
- )}/> */}
 
-        <Route exact path="/offer/end" render={() => (
-        !UserStore.isLoggedIn() ? (<Redirect to="/login"/>) : (<EndOffer userdata={UserStore}/>) )}/>
-          <Route exact path="/myrents" render={() => (
-        !UserStore.isLoggedIn() ? (<Redirect to="/login"/>) : (<MyRent userdata={UserStore}/>) )}/> 
+        <Route exact path="/offers/end" render={(props) => (
+        !UserStore.isLoggedIn() ? (<Redirect to="/login"/>) : (<EndOffer {...props} userdata={UserStore}/>) )}/>
+          <Route exact path="/myrents" render={(props) => (
+        !UserStore.isLoggedIn() ? (<Redirect to="/login"/>) : (<MyRent {...props} userdata={UserStore}/>) )}/> 
              <Route exact path="/" render={(props) => (
               !UserStore.isLoggedIn() ? (<Redirect to="/login"/>) : (<AllNoRentedOffers {...props} userdata={UserStore}/>) )}/>
           
