@@ -12,7 +12,11 @@ export default class EditOffer extends Component {
     componentDidMount = () => {
         const  id  = this.props.location.state.id
         console.log(id)
-        axios.get('http://localhost:8080/offers/' + id)
+        axios.get('http://localhost:8080/offers/' + id,{
+            headers : {
+                'Authorization':'Bearer '+this.props.userdata.accessToken
+		    }
+        })
         .then(  (response) => {
             console.log(response.data)
             this.setState({
@@ -41,7 +45,7 @@ export default class EditOffer extends Component {
             //categories: this.state.value2
         },{
             headers : {
-               // 'auth-token':this.props.userdata.authToken  
+                'Authorization':'Bearer '+this.props.userdata.accessToken
 		    }
         })
         .then(function (response){

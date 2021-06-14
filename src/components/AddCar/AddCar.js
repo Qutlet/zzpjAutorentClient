@@ -31,11 +31,10 @@ export default class AddCar extends Component {
             fuel: event.target.fuel.value,
             country: event.target.country.value,
     },{
-            headers: {
-                // 'auth-token':this.props.userdata.authToken
-                'image-path':'C:\\Users\\macie\\Desktop\\uml2.png'
-            }
-        })
+        headers : {
+            'Authorization':'Bearer '+this.props.userdata.accessToken
+        }
+    })
         // .then(function (response) {
         //     console.log(response);
         //     alert(response);

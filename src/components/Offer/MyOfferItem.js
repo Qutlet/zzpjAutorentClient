@@ -21,10 +21,11 @@ export class MyOfferItem extends Component {
         }
     }
     deleteOffer = () => {
-        axios.delete('http://localhost:8080/offers/'+ this.state.offerID,{headers: {
-            'Content-Type': 'application/json',
-            // 'auth-token': this.props.userdata.authToken
-        }})
+        axios.delete('http://localhost:8080/offers/'+ this.state.offerID,{
+            headers : {
+                'Authorization':'Bearer '+this.props.userdata.accessToken
+		    }
+        })
         .then((res) => {
             // console.log(res.data)
             window.location.reload()

@@ -13,9 +13,8 @@ export default class AddOffer extends Component {
     componentDidMount = () => {
         axios.get('http://localhost:8080/cars/available',{
             headers : {
-                //'language':'pl' ,
-                //'auth-token':this.props.userdata.authToken
-            }
+                'Authorization':'Bearer '+this.props.userdata.accessToken
+		    }
         })
         .then(  (response) => {
             console.log(response.data)

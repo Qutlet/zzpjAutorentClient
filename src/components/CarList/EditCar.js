@@ -13,7 +13,11 @@ export default class AddCar extends Component {
     componentDidMount = () => {
         const  id  = this.props.location.state.id
         console.log(id)
-        axios.get('http://localhost:8080/cars/' + id)
+        axios.get('http://localhost:8080/cars/' + id,{
+            headers : {
+                'Authorization':'Bearer '+this.props.userdata.accessToken
+		    }
+        })
         .then(  (response) => {
             console.log(response.data)
             this.setState({
@@ -39,10 +43,10 @@ export default class AddCar extends Component {
             fuel: event.target.fuel.value,
             country: event.target.country.value,
     },{
-            headers: {
-                // 'auth-token':this.props.userdata.authToken
-            }
-        })
+        headers : {
+            'Authorization':'Bearer '+this.props.userdata.accessToken
+        }
+    })
         // .then(function (response) {
         //     console.log(response);
         //     alert(response);
