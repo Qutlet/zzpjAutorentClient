@@ -128,6 +128,8 @@ renderComments = () => {
     }
 }
 
+
+
 render() {
     return (
                     <div className="container py-5">
@@ -221,7 +223,8 @@ render() {
                 
                                         <PayPalButton 
                                         total={this.state.offer.price * this.state.count}
-                                        offerID={this.state.offer.id}  />
+                                        offerID={this.state.offer.id}
+                                        userid={this.props.userdata.userId}  />
 
                                         <ProductConsumer>
                                             {(value) => (

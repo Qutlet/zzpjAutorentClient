@@ -5,8 +5,9 @@ import {ProductConsumer} from '../../context';
 import PropTypes from 'prop-types'
 //import storage from '@react-native-firebase/storage';
 
-export default class Offer extends Component {
+const url2id = props => props.offer.id;
 
+export default class Offer extends Component {
 
     //componentDidMount = () => {
         // // var firebaseConfig = {
@@ -50,6 +51,7 @@ export default class Offer extends Component {
 
 
     render() {
+    
         const {id, offerName, img, price} = this.props.offer;
         return (
 
@@ -96,6 +98,7 @@ export default class Offer extends Component {
             
         );
     }
+    
 }
 
 Offer.propTypes = {
@@ -106,9 +109,8 @@ Offer.propTypes = {
         price:PropTypes.number
     }).isRequired
 }
+var url2 = 'https://storage.googleapis.com/autorent-a82d9.appspot.com/'+url2id+'.jpg' 
 
-var url3 = 'https://images.pexels.com/photos/733745/pexels-photo-733745.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500';
-var url2 = 'https://storage.googleapis.com/autorent-a82d9.appspot.com/test.jpg'
 
 const ProductWrapper = styled.div`
 .card{

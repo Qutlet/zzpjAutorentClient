@@ -13,7 +13,7 @@ export default class MyApp extends React.Component {
                     // let content = 'Hello world' 
                     // const config = { headers: {'auth-token':this.props.userdata.authToken  } };
                     
-                    axios.put('http://localhost:8080/offers/rent/2/' + id)
+                    axios.put('http://localhost:8080/offers/rent/' + this.props.userid + '/' + id)
                     .then(function (response){
                         console.log(response);
                     })

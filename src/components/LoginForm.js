@@ -46,7 +46,7 @@ export class LoginForm extends Component {
             password: this.state.password
           })
           .then((response) => {
-              console.log( response.data.userId)
+              console.log( response.data)
               UserStore.login(response.data.roles, response.data.accessToken,response.data.userId);
               this.props.history.push('/');
               alert('Zalogowano pomyślnie!');

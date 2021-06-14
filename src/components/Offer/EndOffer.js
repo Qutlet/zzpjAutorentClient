@@ -81,11 +81,11 @@ handleSubmit = (event) =>{
 
 endOffer = () => {
 	console.log(this.props.userdata.accessToken)
-	axios.put('http://localhost:8080/offers/return/' + this.props.userdata.userId + '/' + this.props.location.state.id , {
-		headers : {
-				'Authorization':'Bearer '+this.props.userdata.accessToken
-			}
-	})
+	axios.put('http://localhost:8080/offers/return/0/' + this.props.location.state.id ,{}, {
+        headers : {
+            'Authorization':'Bearer '+this.props.userdata.accessToken
+        }
+    })
 	.then(function (response){
         console.log(response);
     })
