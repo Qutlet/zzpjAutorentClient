@@ -20,29 +20,15 @@ export class MyRentsItem extends Component {
         border: "none"
         }
     }
-    deleteOffer = () => {
-        axios.delete('http://localhost:8080/offers/'+ this.state.offerID,{headers: {
-            'Content-Type': 'application/json',
-            // 'auth-token': this.props.userdata.authToken
-        }})
-        .then((res) => {
-            // console.log(res.data)
-            window.location.reload()
-         })
-         .catch(err => {
-             console.log(this.state.carID)
-             console.log(err)
-         });
-         
-    }
+    
 
     render() {
         return (
             
             <tr key={this.props.offer.id}>
                <td>{this.props.offer.offerName}</td>
-               <td>{this.props.offer.offerName}</td>
-               <td>{this.props.offer.offerName}</td>
+               <td>{this.props.offer.price}</td>
+               <td>{this.props.offer.description}</td>
                <td> 
                    <Link to={{
                             pathname: 'offers/end' ,

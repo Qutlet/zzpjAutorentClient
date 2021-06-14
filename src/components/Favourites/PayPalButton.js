@@ -13,7 +13,7 @@ export default class MyApp extends React.Component {
                     // let content = 'Hello world' 
                     // const config = { headers: {'auth-token':this.props.userdata.authToken  } };
                     
-                    axios.put('http://localhost:8080/offers/rent/' + this.props.userid + '/' + id)
+                    axios.put('http://localhost:8080/offers/rent/' + this.props.userdata.userId + '/' + id)
                     .then(function (response){
                         console.log(response);
                     })
@@ -30,6 +30,22 @@ export default class MyApp extends React.Component {
         const onCancel = (data) => {
             // User pressed "cancel" or close Paypal's popup!
             console.log('The payment was cancelled!', data);
+            let id =  this.props.offerID;
+                    // const link = 'http://localhost:8080/offers/rent/2/' + id;
+                    // let content = 'Hello world' 
+                    // const config = { headers: {'auth-token':this.props.userdata.authToken  } };
+                    
+                    axios.put('http://localhost:8080/offers/rent/' + this.props.userdata.userId + '/' + id,{},{
+                        headers : {
+                            'Authorization':'Bearer '+this.props.userdata.accessToken
+                        }
+                    })
+                    .then(function (response){
+                        console.log(response);
+                    })
+                    .catch(function (error){
+                        console.log(error);
+                    });
             // You can bind the "data" object's value to your state or props or whatever here, please see below for sample returned data
         }
  

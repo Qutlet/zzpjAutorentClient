@@ -224,7 +224,7 @@ render() {
                                         <PayPalButton 
                                         total={this.state.offer.price * this.state.count}
                                         offerID={this.state.offer.id}
-                                        userid={this.props.userdata.userId}  />
+                                        userdata={this.props.userdata}  />
 
                                         <ProductConsumer>
                                             {(value) => (

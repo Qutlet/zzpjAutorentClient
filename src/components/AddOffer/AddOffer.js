@@ -11,7 +11,7 @@ export default class AddOffer extends Component {
             value2: 0};
 
     componentDidMount = () => {
-        axios.get('http://localhost:8080/cars/available',{
+        axios.get('http://localhost:8080/cars/available/'+this.props.userdata.userId,{
             headers : {
                 'Authorization':'Bearer '+this.props.userdata.accessToken
 		    }
@@ -43,8 +43,8 @@ export default class AddOffer extends Component {
         event.preventDefault();
         axios.post('http://localhost:8080/offers', {
             carID: this.state.value,
-			//ownerID: event.target.ownerID.value,
-			clientID: null,
+			ownerID: this.props.userdata.userId,
+			clientID: 0,
 			price: event.target.price.value,
             offerName: event.target.offerName.value,
             description: event.target.description.value,
@@ -55,8 +55,8 @@ export default class AddOffer extends Component {
             //categories: this.state.value2
         },{
             headers : {
-               // 'auth-token':this.props.userdata.authToken  
-		    }
+                'Authorization':'Bearer '+this.props.userdata.accessToken
+            }
         })
         .then(function (response){
             console.log(response);
@@ -65,7 +65,11 @@ export default class AddOffer extends Component {
             console.log(error);
         });
 
-        axios.put('http://localhost:8080/cars/rent/' + this.state.value)
+        axios.put('http://localhost:8080/cars/rent/' + this.state.value,{},{
+            headers : {
+                'Authorization':'Bearer '+this.props.userdata.accessToken
+            }
+        })
         .then(function (response){
             console.log(response);
         })

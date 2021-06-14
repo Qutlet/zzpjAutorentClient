@@ -33,8 +33,8 @@ export default class AddCar extends Component {
         event.preventDefault();
         axios.post('http://localhost:8080/cars/' + this.state.car.id , {
             carName: event.target.carName.value,
-            carBrand: event.target.carBrand.value,
-            carModel: event.target.carModel.value,
+            carBrandName: event.target.carBrandName.value,
+            carModelName: event.target.carModelName.value,
 			isRented: false,
             enginePower: event.target.enginePower.value,
             engine: event.target.engine.value,

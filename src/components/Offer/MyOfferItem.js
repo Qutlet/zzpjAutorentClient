@@ -42,8 +42,8 @@ export class MyOfferItem extends Component {
             
             <tr key={this.props.offer.id}>
                <td>{this.props.offer.offerName}</td>
-               <td>{this.props.offer.offerName}</td>
-               <td>{this.props.offer.offerName}</td>
+               <td>{this.props.offer.price}</td>
+               <td>{this.props.offer.description}</td>
                <td> 
                    <ButtonContainer onClick={() => this.deleteOffer()}>
                         Usuń
